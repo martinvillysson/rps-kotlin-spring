@@ -1,0 +1,51 @@
+<html>
+<header>
+    <title>{{title}}</title>
+</header>
+<body>
+<section>
+    <h1>{{title}}</h1>
+</section>
+<section>
+    <form id="playForm">
+        <div>Player One</div>
+        <fieldset>
+            <legend>Please select your action:</legend>
+            {{#actions}}
+                <div>
+                    <input type="radio" id="playerOne-{{.}}" name="playerOneActions" value="{{.}}"/>
+                    <label for="playerOne-{{.}}">{{.}}</label>
+                </div>
+            {{/actions}}
+        </fieldset>
+
+        <div>Player Two</div>
+        <fieldset>
+            <legend>Please select your action:</legend>
+            {{#actions}}
+                <div>
+                    <input type="radio" id="playerTwo-{{.}}" name="playerTwoActions" value="{{.}}"/>
+                    <label for="playerTwo-{{.}}">{{.}}</label>
+                </div>
+            {{/actions}}
+        </fieldset>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+</section>
+</body>
+<script>
+    const playerForm = document.getElementById('playForm');
+    playerForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        fetch(`${window.location.origin}/api/play?playerOneAction=${playerForm.playerOneActions.value}&playerTwoAction=${playerForm.playerTwoActions.value}`)
+        .then(response => response.text())
+        .then(val => {
+            alert(val);
+            playerForm.reset();
+        });
+    });
+</script>
+</html>
