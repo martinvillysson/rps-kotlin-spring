@@ -11,7 +11,7 @@ class PlayController(private val resultService: ResultService) {
 
     @GetMapping("/api/play")
     fun play(@RequestParam(name = "playerOneAction", required = true) playerOneAction: Action, @RequestParam(name = "playerTwoAction", required = true) playerTwoAction: Action): String {
-        val result = resultService.getResult(playerOneAction, playerTwoAction);
-        return "${result.winner} won with action ${result.winningAction} against ${result.loosingAction}";
+        val result = resultService.getResult(playerOneAction, playerTwoAction)
+        return "${result.winner} won with action ${result.winningAction} against ${result.losingAction}"
     }
 }
