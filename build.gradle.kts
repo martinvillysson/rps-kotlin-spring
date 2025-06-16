@@ -23,12 +23,17 @@ repositories {
 publishing {
     repositories {
         maven {
-            name = "GitHubPackages"
+            name = "GithubPackages"
             url = uri("https://maven.pkg.github.com/martinvillysson/rps-kotlin-spring") // Github Package
             credentials {
-                username = System.getenv("USERNAME")
-                password = System.getenv("TOKEN")
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
             }
+        }
+    }
+    publications {
+        register<MavenPublication>("gpr") {
+            from(components["java"])
         }
     }
 }
