@@ -7,8 +7,8 @@ plugins {
     id("maven-publish")
 }
 
-group = "com.demo"
-version = "0.0.1-SNAPSHOT"
+group = "com.demo.rps"
+version = "1.0"
 
 java {
     toolchain {
