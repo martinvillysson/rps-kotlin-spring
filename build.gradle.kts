@@ -7,7 +7,7 @@ plugins {
     id("maven-publish")
 }
 
-group = "com.demo.rps"
+group = "com.demo"
 version = "1.0"
 
 java {
